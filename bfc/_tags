@@ -1,0 +1,1 @@
+<*.{ml,mli}>: pp(camlp5r)
