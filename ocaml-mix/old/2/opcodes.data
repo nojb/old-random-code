@@ -1,0 +1,64 @@
+00    1     NOP(0)
+01    2     ADD(0:5) FADD(6)
+02    2     SUB(0:5) FSUB(6)
+03    10    MUL(0:5) FMUL(6)
+04    12    DIV(0:5) FDIV(6)
+05    10    NUM(0) CHAR(1) HLT(2)
+06    2     SLA(0) SRA(1) SLAX(2) SRAX(3) SLC(4) SRC(5)
+07    1     MOVE(1)
+08    2     LDA(0:5) { vm.rA <- get_fieldp vm.mem.[vm.xM] vm.xF }
+09    2     LD1(0:5) { vm.rI.[1] <- get_fieldp vm.mem.[vm.xM] vm.xF }
+10    2     LD2(0:5) { vm.rI.[2] <- get_fieldp vm.mem.[vm.xM] vm.xF }
+11    2     LD3(0:5) { vm.rI.[3] <- get_fieldp vm.mem.[vm.xM] vm.xF }
+12    2     LD4(0:5) { vm.rI.[4] <- get_fieldp vm.mem.[vm.xM] vm.xF }
+13    2     LD5(0:5) { vm.rI.[5] <- get_fieldp vm.mem.[vm.xM] vm.xF }
+14    2     LD6(0:5) { vm.rI.[6] <- get_fieldp vm.mem.[vm.xM] vm.xF }
+15    2     LDX(0:5) { vm.rX <- get_fieldp vm.mem.[vm.xM] vm.xF }
+16    2     LDAN(0:5) { vm.rA <- neg (get_fieldp vm.mem.[vm.xM] vm.xF) }
+17    2     LD1N(0:5) { vm.rI.[1] <- neg (get_fieldp vm.mem.[vm.xM] vm.xF) }
+18    2     LD2N(0:5)
+19    2     LD3N(0:5)
+20    2     LD4N(0:5)
+21    2     LD5N(0:5)
+22    2     LD6N(0:5)
+23    2     LDXN(0:5)
+24    2     STA(0:5) { set_fieldp vm.mem.[vm.xM] (get_fieldp vm.rA vm.xF) }
+25    2     ST1(0:5)
+26    2     ST2(0:5)
+27    2     ST3(0:5)
+28    2     ST4(0:5)
+29    2     ST5(0:5)
+30    2     ST6(0:5)
+31    2     STX(0:5)
+32    2     STJ(0:2)
+33    2     STZ(0:5)
+34    1     JBUS(0)
+35    1     IOC(0)
+36    1     IN(0)
+37    1     OUT(0)
+38    1     JRED(0)
+39    1     JMP(0) JSJ(1) JOV(2) JNOV(3) [*]
+40    1     JA[+]
+41    1     J1[+]
+42    1     J2[+]
+43    1     J3[+]
+44    1     J4[+]
+45    1     J5[+]
+46    1     J6[+]
+47    1     JX[+]
+48    1     INCA(0) DECA(1) ENTA(2) ENNA(3)
+49    1     INC1(0) DEC1(1) ENT1(2) ENN1(3)
+50    1     INC2(0) DEC2(1) ENT2(2) ENN2(3)
+51    1     INC3(0) DEC3(1) ENT3(2) ENN3(3)
+52    1     INC4(0) DEC4(1) ENT4(2) ENN4(3)
+53    1     INC5(0) DEC5(1) ENT5(2) ENN5(3)
+54    1     INC6(0) DEC6(1) ENT6(2) ENN6(3)
+55    1     INCX(0) DECX(1) ENTX(2) ENNX(3)
+56    2     CMPA(0:5) FCMP(6)
+57    2     CMP1(0:5)
+58    2     CMP2(0:5)
+59    2     CMP3(0:5)
+60    2     CMP4(0:5)
+61    2     CMP5(0:5)
+62    2     CMP6(0:5)
+63    2     CMPX(0:5)

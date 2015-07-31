@@ -1,0 +1,20 @@
+type t;
+
+value of_int : int -> t;
+value to_int : t -> int;
+value of_short : Short.t -> t;
+value to_short : t -> Short.t;
+value to_string : t -> string;
+value of_string : string -> t;
+value add : t -> t -> t;
+value mul : t -> t -> t;
+value div : t -> t -> t * t;
+value sub : t -> t -> t;
+value neg : t -> t;
+value zero : t;
+value minus_zero : t;
+value field : t -> int -> t;
+value decode : t -> int * int * int * int;
+value lsr : t -> int -> t;
+value lsl : t -> int -> t;
+value asr : t -> int -> t;
