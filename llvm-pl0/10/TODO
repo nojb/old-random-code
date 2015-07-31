@@ -1,0 +1,2 @@
+[ ] Add code to implement equality and non-equality of booleans
+[ ] Use a weak hash table to have only copy of each type

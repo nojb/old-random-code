@@ -1,0 +1,16 @@
+var x, y;
+procedure fact;
+  var f;
+  begin
+    f := 1;
+    while x > 0 do begin
+      f := f * x;
+      x := x - 1
+    end;
+    y := f
+  end;
+begin
+  x:=10;
+  call fact
+end.
+

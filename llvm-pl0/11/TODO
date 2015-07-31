@@ -1,0 +1,5 @@
+[ ] Add code to implement equality and non-equality of booleans
+[ ] Use a weak hash table to have only copy of each type ???
+[ ] Separate addition of types (which happens in TYPE parts and when one
+    sees an immediate type) from looking up of types (i.e. rework
+    [lookup_type])
