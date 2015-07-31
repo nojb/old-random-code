@@ -1,0 +1,50 @@
+grammar Addr
+	include Expr
+	rule addr
+		a_part ind_part field_part {
+			def asm(parser)
+				{	:addr		=> a_part.eval(parser),
+					:index	=> ind_part.eval(parser),
+					:field	=> field_part.eval(parser) }
+			end
+		}
+	end
+	rule a_part
+		'=' expression '=' {
+			def eval(parser)
+				puts "evaluating constant..."
+				return parser.define_constant(Stone::Word.new(expression.eval(parser)))
+			end
+		} /
+		expression /
+		"" {
+			def eval(parser)
+				return 0
+			end
+		}
+	end
+	rule ind_part
+		"," expression {
+			def eval(parser)
+				expression.eval(parser)
+			end
+		} /
+		"" {
+			def eval(parser)
+				return 0
+			end
+		}
+	end
+	rule field_part
+		"(" expression ")" {
+			def eval(parser)
+				expression.eval(parser)
+			end
+		} /
+		"" {
+			def eval(parser)
+				return nil
+			end
+		}
+	end
+end

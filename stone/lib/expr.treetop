@@ -1,0 +1,61 @@
+grammar Expr
+	rule expression
+		atom '+' expression {
+			def eval(parser)
+				atom.eval(parser) + expression.eval(parser)
+			end
+		} /
+		atom '*' expression {
+			def eval(parser)
+				atom.eval(parser) * expression.eval(parser)
+			end
+		} /
+		atom '-' expression {
+			def eval(parser)
+				atom.eval(parser) - expression.eval(parser)
+			end
+		} /
+		atom ':' expression {
+			def eval(parser)
+				atom.eval(parser) * 8 + expression.eval(parser)
+			end
+		} /
+		'-' atom {
+			def eval(parser)
+				-atom.eval(parser)
+			end
+		} /
+		'+' atom {
+			def eval(parser)
+				atom.eval(parser)
+			end
+		} /
+		atom
+	end
+
+	rule atom
+		symbol /
+		number /
+		'*' {
+			def eval(parser)
+				parser.loc
+			end
+		}
+	end
+
+	rule number
+		[0-9]+ {
+			def eval(parser)
+				text_value.to_i
+			end
+		}
+	end
+	
+	rule symbol
+		[0-9]* [a-zA-Z]+ [0-9a-zA-Z]* {
+			def eval(parser)
+				parser.lookup_label(text_value)
+			end
+		}
+	end
+end

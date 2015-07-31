@@ -1,0 +1,37 @@
+grammar Wval
+	include Expr
+	rule wval
+		x:f_expression y:(',' z:f_expression)* {
+			def eval(parser)
+				w = Stone::Word.new
+				w.[]=(*x.eval(parser))
+				y.elements.inject(w) do
+					|partial,nxt|
+					partial.[]=*nxt.z.eval(parser)
+				end
+			end	
+		}
+	end
+
+	rule f_expression
+		expression a:f_part? {
+			def eval(parser)
+				z = expression.eval(parser)
+				if a.text_value != "" then
+					return a.eval(parser),z
+				else
+					return 0..5, z
+				end
+			end
+		}
+	end
+
+	rule f_part
+		'(' expression ')' {
+			def eval(parser)
+				x = expression.eval(parser)
+				return (x/8..x%8)
+			end
+		}
+	end
+end

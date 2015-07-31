@@ -1,0 +1,20 @@
+# -*- ruby -*-
+
+require 'rubygems'
+require 'hoe'
+
+Hoe.spec 'stone' do
+  developer('Nicolas Ojeda Bar', 'nojb@xxx.com')
+
+  # self.rubyforge_name = 'stonex' # if different than 'stone'
+end
+
+#Rake::RDocTask.new do |rdoc|
+#  rdoc.title = "Stone - a MIX assembler and virtual machine"
+#  rdoc.options += [
+#    '-SHN',
+#    '-f', 'darkfish',
+#  ]
+#end
+
+# vim: syntax=ruby
