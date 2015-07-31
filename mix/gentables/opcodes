@@ -1,0 +1,149 @@
+NOP         0       !0  1      { }
+ADD         1       5   2       { rA = ADD (rA, MEM[M]); }
+FADD        1       6   2
+SUB         2       5   2
+FSUB        2       6   2
+MUL         3       5   10
+FMUL        3       6   10
+DIV         4       5   12
+FDIV        4       6   12
+NUM         5       0   10
+CHAR        5       1   10
+HLT         5       2   10   { halted = true }
+SLA         6       0   2   { rA = SHIFT_LEFT (V) }
+SRA         6       1   2
+SLAX        6       2   2
+SRAX        6       3   2
+SLC         6       4   2
+SRC         6       5   2
+MOVE        7       !1  1
+LDA         8       5   2   { rA <- get_field mem.(_M) _F }
+LD1         9       5   2    { rI.(1) <- get_field mem.(_M) _F }
+LD2         10      5   2   { rI.(2) <- get_field mem.(_M) _F }
+LD3         11      5   2    { rI.(3) <- get_field mem.(_M) _F }
+LD4         12      5   2    { rI.(4) <- get_field mem.(_M) _F }
+LD5         13      5   2    { rI.(5) <- get_field mem.(_M) _F }
+LD6         14      5   2    { rI.(6) <- get_field mem.(_M) _F }
+LDX         15      5   2    { rX <- get_field mem.(_M) _F }
+LDAN        16      5   2    { rA <- -(get_field mem.(_M) _F) }
+LD1N        17      5   2    { rI.(1) <- -(get_field mem.(_M) _F) }
+LD2N        18      5   2    { rI.(2) <- -(get_field mem.(_M) _F) }
+LD3N        19      5   2    { rI.(3) <- -(get_field mem.(_M) _F) }
+LD4N        20      5   2    { rI.(4) <- -(get_field mem.(_M) _F) }
+LD5N        21      5   2    { rI.(5) <- -(get_field mem.(_M) _F) }
+LD6N        22      5   2    { rI.(6) <- -(get_field mem.(_M) _F) }
+LDXN        23      5   2    { rI.(7) <- -(get_field mem.(_M) _F) }
+STA         24      5   2    { mem.(_M) <- set_field mem.(_M) _F rA }
+ST1         25      5   2    { mem.(_M) <- set_field mem.(_M) _F rI.(1) }
+ST2         26      5   2    { mem.(_M) <- set_field mem.(_M) _F rI.(2) }
+ST3         27      5   2    { mem.(_M) <- set_field mem.(_M) _F rI.(3) }
+ST4         28      5   2    { mem.(_M) <- set_field mem.(_M) _F rI.(4) }
+ST5         29      5   2    { mem.(_M) <- set_field mem.(_M) _F rI.(5) }
+ST6         30      5   2    { mem.(_M) <- set_field mem.(_M) _F rI.(6) }
+STX         31      5   2    { mem.(_M) <- set_field mem.(_M) _F rX }
+STJ         32      2   2    { mem.(_M) <- set_field mem.(_M) _F rJ }
+STZ         33      5   2    { mem.(_M) <- 0 }
+JBUS        34      !0  1
+IOC         35      !0  1
+IN          36      !0  1
+OUT         37      !0  1
+JRED        38      !0  1
+JMP         39      0   1    { rJ <- loc; loc <- _M }
+JSJ         39      1   1    { loc <- _M }
+JOV         39      2   1    { if overflow then begin rJ <- loc; loc <- _M end }
+JNOV        39      3   1    { if not overflow then begin rJ <- loc; loc <- _M end }
+JL          39      4   1    { if cmp < 0 then begin rJ <- loc; loc <- _M end }
+JE          39      5   1    { if cmp = 0 then begin rJ <- loc; loc <- _M end }
+JG          39      6   1    { if cmp > 0 then begin rJ <- loc; loc <- _M end }
+JGE         39      7   1    { if cmp >= 0 then begin rJ <- loc; loc <- _M end }
+JNE         39      8   1    { if cmp <> 0 then begin rJ <- loc; loc <- _M end }
+JLE         39      9   1    { if cmp <= 0 then begin rJ <- loc; loc <- _M end }
+JAN         40      0   1    { if rA < 0 then begin rJ <- loc; loc <- _M end }
+JAZ         40      1   1    { if rA = 0 then begin rJ <- loc; loc <- _M end }
+JAP         40      2   1    { if rA > 0 then begin rJ <- loc; loc <- _M end }
+JANN        40      3   1    { if rA >= 0 then begin rJ <- loc; loc <- _M end }
+JANZ        40      4   1    { if rA <> 0 then begin rJ <- loc; loc <- _M end }
+JANP        40      5   1    { if rA <= 0 then begin rJ <- loc; loc <- _M end }
+J1N         41      0   1    { if rI.(1) < 0 then begin rJ <- loc; loc <- _M end }
+J1Z         41      1   1    { if rI.(1) = 0 then begin rJ <- loc; loc <- _M end }
+J1P         41      2   1    { if rI.(1) > 0 then begin rJ <- loc; loc <- _M end }
+J1NN        41      3   1    { if rI.(1) >= 0 then begin rJ <- loc; loc <- _M end }
+J1NZ        41      4   1    { if rI.(1) <> 0 then begin rJ <- loc; loc <- _M end }
+J1NP        41      5   1    { if rI.(1) <= 0 then begin rJ <- loc; loc <- _M end }
+J2N         42      0   1    { if rI.(2) < 0 then begin rJ <- loc; loc <- _M end }
+J2Z         42      1   1    { if rI.(2) = 0 then begin rJ <- loc; loc <- _M end }
+J2P         42      2   1    { if rI.(2) > 0 then begin rJ <- loc; loc <- _M end }
+J2NN        42      3   1    { if rI.(2) >= 0 then begin rJ <- loc; loc <- _M end }
+J2NZ        42      4   1    { if rI.(2) <> 0 then begin rJ <- loc; loc <- _M end }
+J2NP        42      5   1    { if rI.(2) <= 0 then begin rJ <- loc; loc <- _M end }
+J3N         43      0   1
+J3Z         43      1   1
+J3P         43      2   1
+J3NN        43      3   1
+J3NZ        43      4   1  
+J3NP        43      5   1
+J4N         44      0   1
+J4Z         44      1   1
+J4P         44      2   1
+J4NN        44      3   1
+J4NZ        44      4   1
+J4NP        44      5   1
+J5N         45      0   1
+J5Z         45      1   1
+J5P         45      2   1
+J5NN        45      3   1
+J5NZ        45      4   1
+J5NP        45      5   1
+J6N         46      0   1
+J6Z         46      1   1
+J6P         46      2   1
+J6NN        46      3   1
+J6NZ        46      4   1
+J6NP        46      5   1
+JXN         47      0   1
+JXZ         47      1   1
+JXP         47      2   1
+JXNN        47      3   1
+JXNZ        47      4   1
+JXNP        47      5   1
+INCA        48      0   1   { rA <- rA + _M }
+DECA        48      1   1   { rA <- rA - _M }
+ENTA        48      2   1    { rA <- _M }
+ENNA        48      3   1    { rA <- (-_M) }
+INC1        49      0   1    { rI.(1) <- rI.(1) + _M }
+DEC1        49      1   1    { rI.(1) <- rI.(1) - _M }
+ENT1        49      2   1    { rI.(1) <- _M }
+ENN1        49      3   1    { rI.(1) <- (-_M) }
+INC2        50      0   1    { rI.(2) <- rI.(2) + _M }
+DEC2        50      1   1    { rI.(2) <- rI.(2) - _M }
+ENT2        50      2   1    { rI.(2) <- _M }
+ENN2        50      3   1    { rI.(2) <- (-_M) }
+INC3        51      0   1    { rI.(3) <- rI.(3) + _M }
+DEC3        51      1   1    { rI.(3) <- rI.(3) - _M }
+ENT3        51      2   1    { rI.(3) <- _M }
+ENN3        51      3   1    { rI.(3) <- (-_M) }
+INC4        52      0   1
+DEC4        52      1   1
+ENT4        52      2   1
+ENN4        52      3   1
+INC5        53      0   1
+DEC5        53      1   1
+ENT5        53      2   1
+ENN5        53      3   1
+INC6        54      0   1
+DEC6        54      1   1
+ENT6        54      2   1
+ENN6        54      3   1
+INCX        55      0   1
+DECX        55      1   1
+ENTX        55      2   1
+ENNX        55      3   1
+CMPA        56      5   2
+FCMPA       56      6   2
+CMP1        57      5   2
+CMP2        58      5   2
+CMP3        59      5   2
+CMP4        60      5   2
+CMP5        61      5   2
+CMP6        62      5   2
+CMPX        63      5   2
