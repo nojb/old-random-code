@@ -1,0 +1,5 @@
+10   DIM A(10)
+20   FOR I = 0 TO 10
+30   LET A(I) = I ^ 2
+40   NEXT I
+50   PRINT A(5)
